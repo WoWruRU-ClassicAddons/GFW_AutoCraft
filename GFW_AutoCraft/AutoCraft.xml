@@ -25,7 +25,7 @@
 			</OnClick>
 			<OnEnter>
 				GameTooltip:SetOwner(this, "ANCHOR_TOPLEFT");
-				GameTooltip:SetText(string.format(QUEUE_BUTTON_TOOLTIP, TradeSkillInputBox:GetNumber()));
+				GameTooltip:SetText(string.format(QUEUE_ALL_BUTTON_TOOLTIP, TradeSkillInputBox:GetNumber()));
 				GameTooltip:Show();
 			</OnEnter>
 			<OnLeave>
@@ -46,7 +46,7 @@
 			<OnEnter>
 				GameTooltip:SetOwner(this, "ANCHOR_TOPLEFT");
 				local _, _, numAvailable = AutoCraft.GetTradeSkillInfo(GetTradeSkillSelectionIndex());
-				GameTooltip:SetText(string.format(QUEUE_BUTTON_TOOLTIP, numAvailable));
+				GameTooltip:SetText(string.format(QUEUE_ALL_BUTTON_TOOLTIP, numAvailable));
 				GameTooltip:Show();
 			</OnEnter>
 			<OnLeave>
@@ -87,6 +87,14 @@
 			<OnClick>
 				AutoCraft.QueueEverything();
 			</OnClick>
+			<OnEnter>
+				GameTooltip:SetOwner(this, "ANCHOR_TOPLEFT");
+				GameTooltip:SetText(QUEUE_EVERYTHING_BUTTON_TOOLTIP);
+				GameTooltip:Show();
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
 		</Scripts>
 	</Button>
 	<Button name="AutoCraftRunQueue" inherits="UIPanelButtonTemplate" text="FAC_RUN_QUEUE_BUTTON"> <!-- parent="TradeSkillFrame"> -->
@@ -200,14 +208,14 @@
 		</Scripts>
 	</Button>
 	
-	<Frame name="QueueIconsFrame" toplevel="true" parent="UIParent" hidden="false">
+	<Frame name="QueueIconsFrame" toplevel="true" parent="AutoCraftBackground" hidden="false">
 		<Size>
 			<AbsDimension x="505" y="43"/>
 		</Size>
 		<Anchors>
-			<Anchor point="BOTTOMLEFT" relativeTo="CastingBarFrame" relativePoint="TOPLEFT">
+			<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
 				<Offset>
-					<AbsDimension x="2" y="10"/>
+					<AbsDimension x="2" y="-10"/>
 				</Offset>
 			</Anchor>
 		</Anchors>
@@ -215,12 +223,12 @@
 			<Layer level="BACKGROUND">
 				<FontString name="QueueMessageText" parent="QueueIconsFrame" inherits="GameFontHighlight">
 					<Size>
-						<AbsDimension x="185" y="32"/>
+						<AbsDimension x="300" y="80"/>
 					</Size>
 					<Anchors>
-						<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT">
+						<Anchor point="CENTER" relativeTo="UIErrorsFrame" relativePoint="CENTER">
 							<Offset>
-								<AbsDimension x="-2" y="-20"/>
+								<AbsDimension x="0" y="-20"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -239,36 +247,36 @@
 			</Button>
 			<Button name="QueuedSkillIcon2" inherits="QueuedSkillIconTemplate" parent="QueueIconsFrame" hidden="true" id="2">
 				<Anchors>
-					<Anchor point="LEFT" relativeTo="QueuedSkillIcon1" relativePoint="RIGHT">
+					<Anchor point="TOPLEFT" relativeTo="QueuedSkillIcon1" relativePoint="BOTTOMLEFT">
 						<Offset>
-							<AbsDimension x="4" y="0"/>
+							<AbsDimension x="0" y="-4"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
 			</Button>
 			<Button name="QueuedSkillIcon3" inherits="QueuedSkillIconTemplate" parent="QueueIconsFrame" hidden="true" id="3">
 				<Anchors>
-					<Anchor point="LEFT" relativeTo="QueuedSkillIcon2" relativePoint="RIGHT">
+					<Anchor point="TOPLEFT" relativeTo="QueuedSkillIcon2" relativePoint="BOTTOMLEFT">
 						<Offset>
-							<AbsDimension x="4" y="0"/>
+							<AbsDimension x="0" y="-4"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
 			</Button>
 			<Button name="QueuedSkillIcon4" inherits="QueuedSkillIconTemplate" parent="QueueIconsFrame" hidden="true" id="4">
 				<Anchors>
-					<Anchor point="LEFT" relativeTo="QueuedSkillIcon3" relativePoint="RIGHT">
+					<Anchor point="TOPLEFT" relativeTo="QueuedSkillIcon3" relativePoint="BOTTOMLEFT">
 						<Offset>
-							<AbsDimension x="4" y="0"/>
+							<AbsDimension x="0" y="-4"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
 			</Button>
 			<Button name="QueuedSkillIcon5" inherits="QueuedSkillIconTemplate" parent="QueueIconsFrame" hidden="true" id="5">
 				<Anchors>
-					<Anchor point="LEFT" relativeTo="QueuedSkillIcon4" relativePoint="RIGHT">
+					<Anchor point="TOPLEFT" relativeTo="QueuedSkillIcon4" relativePoint="BOTTOMLEFT">
 						<Offset>
-							<AbsDimension x="4" y="0"/>
+							<AbsDimension x="0" y="-4"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -284,36 +292,36 @@
 			</Button>
 			<Button name="QueuedSkillIcon7" inherits="QueuedSkillIconTemplate" parent="QueueIconsFrame" hidden="true" id="7">
 				<Anchors>
-					<Anchor point="LEFT" relativeTo="QueuedSkillIcon6" relativePoint="RIGHT">
+					<Anchor point="TOPLEFT" relativeTo="QueuedSkillIcon6" relativePoint="BOTTOMLEFT">
 						<Offset>
-							<AbsDimension x="4" y="0"/>
+							<AbsDimension x="0" y="-4"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
 			</Button>
 			<Button name="QueuedSkillIcon8" inherits="QueuedSkillIconTemplate" parent="QueueIconsFrame" hidden="true" id="8">
 				<Anchors>
-					<Anchor point="LEFT" relativeTo="QueuedSkillIcon7" relativePoint="RIGHT">
+					<Anchor point="TOPLEFT" relativeTo="QueuedSkillIcon7" relativePoint="BOTTOMLEFT">
 						<Offset>
-							<AbsDimension x="4" y="0"/>
+							<AbsDimension x="0" y="-4"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
 			</Button>
 			<Button name="QueuedSkillIcon9" inherits="QueuedSkillIconTemplate" parent="QueueIconsFrame" hidden="true" id="9">
 				<Anchors>
-					<Anchor point="LEFT" relativeTo="QueuedSkillIcon8" relativePoint="RIGHT">
+					<Anchor point="TOPLEFT" relativeTo="QueuedSkillIcon8" relativePoint="BOTTOMLEFT">
 						<Offset>
-							<AbsDimension x="4" y="0"/>
+							<AbsDimension x="0" y="-4"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
 			</Button>
 			<Button name="QueuedSkillIcon10" inherits="QueuedSkillIconTemplate" parent="QueueIconsFrame" hidden="true" id="10">
 				<Anchors>
-					<Anchor point="LEFT" relativeTo="QueuedSkillIcon9" relativePoint="RIGHT">
+					<Anchor point="TOPLEFT" relativeTo="QueuedSkillIcon9" relativePoint="BOTTOMLEFT">
 						<Offset>
-							<AbsDimension x="4" y="0"/>
+							<AbsDimension x="0" y="-4"/>
 						</Offset>
 					</Anchor>
 				</Anchors>

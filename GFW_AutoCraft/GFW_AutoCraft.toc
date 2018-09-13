@@ -3,6 +3,7 @@
 ## Title: Fizzwidget AutoCraft
 ## Author: Gazmik Fizzwidget
 ## Notes: Allows you to queue up several trade skill actions to be performed automatically.
+## Notes-ruRU: Позволяет добавлять предметы для создания в очередь.
 ## SavedVariables: FAC_Config
 ## LoadOnDemand: 1
 ## LoadWith: Blizzard_TradeSkillUI

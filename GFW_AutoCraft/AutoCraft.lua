@@ -534,15 +534,19 @@ function P.UpdateDisplay()
 		else
 			if (not P.ManuallyPaused and P.OrderedQueue[1] ~= nil and P.OrderedQueue[1].skill ~= GetTradeSkillLine()) then
 				QueueMessageText:SetText(FAC_QUEUE_PAUSED..": "..string.format(FAC_SWITCH_WINDOW_FORMAT, P.OrderedQueue[1].skill));
+				UIFrameFadeOut(QueueMessageText, 5)
 			elseif (P.CastingOtherSpell) then
 				if (CastingBarText:GetText() ~= nil) then
 					QueueMessageText:SetText(FAC_QUEUE_PAUSED..": "..string.format(FAC_WAITING_SPELL_FORMAT, CastingBarText:GetText()));
+					UIFrameFadeOut(QueueMessageText, 5)
 				end
 			else
 				QueueMessageText:SetText(FAC_QUEUE_PAUSED);
+				UIFrameFadeOut(QueueMessageText, 3)
 			end
 			QueueMessageText:Show();
 			AutoCraftRunQueue:SetText(FAC_RUN_QUEUE_BUTTON);
+			UIFrameFadeOut(QueueMessageText, 3)
 		end
 
 		AutoCraftRunQueue:Enable();
